@@ -8,10 +8,15 @@ body {
     background: linear-gradient(to right, rgb(20, 20, 20),
     rgb(50, 50, 50), rgb(20, 20, 20));
     color: white;
+    /* height: 150vh; */
 }
 
 header {
+    /* position: fixed;
+    top: 0; */
     height: 12vh;
+    /* width: 100%; */
+    min-height: 110px;
     background: rgb(20, 20, 20);
     border-bottom: 3px solid rgb(55, 55, 55);
 }
@@ -33,43 +38,28 @@ li {
     display: inline;
     padding: 1em 0em;
     list-style: none;
-    font-size: 150%;
     font-weight: bold;
-}
-/* 
-li:nth-of-type(odd) {
-    border: 4px solid transparent;
-    background: linear-gradient(to top, black, black);
-} */
-
-li:nth-of-type(even) {
-    width: 1px;
-    height: 60%;
-    background-color: rgb(180, 180, 180);
-    margin: 0px 10px;
+    font-size: 20px;
 }
 
 a {
     position: relative;
-    /* width: 100%;
-    height: 100%; */
     padding: 1em 2.5em;
     text-decoration: none;
-    color: white;
+    color: rgb(180, 180, 180);
 }
 
-span {
-    position: relative;
+a:hover {
     color: white;
-    z-index: 10;
 }
 
 a::before {
+    width: 100%;
     content: '';
     position: absolute;
     inset: 0;
-    background: repeating-conic-gradient(red 0deg, red 22deg,
-    transparent 22deg, transparent 85deg, red 180deg);
+    background: var(--afterBackground, repeating-conic-gradient(from 0deg,
+    red 0deg, red 25deg, transparent 20deg, transparent 125deg, red 180deg));
     opacity: 0;
     mask-image: radial-gradient(transparent 55%, white 55%);
     transition: opacity 0.5s;
@@ -79,8 +69,11 @@ a:hover::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* mask-image: radial-gradient(transparent 55%, white 55%); */
     opacity: 1;
+}
+
+a:active::before {
+    background: red;
 }
 
 a::after {
@@ -89,15 +82,6 @@ a::after {
     inset: 2px;
     background: rgb(20, 20, 20);
     mask-image: radial-gradient(transparent 55%, white 55%);
-}
-
-/* li:nth-of-type(odd):hover {
-    background: linear-gradient(to top, black, black) padding-box,
-                linear-gradient(to bottom, yellow, yellow) border-box;
-} */
-
-a:hover {
-    color: rgb(180, 180, 180);
 }
 
 footer {
@@ -111,6 +95,25 @@ footer {
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 0%;
+    bottom: 0;
     border-top: 1em solid black;
+}
+
+@media screen and (max-width: 1000px), (max-height: 500px) {
+    header {
+        height: 60px;
+        min-height: 0px;
+    }
+    li {
+        font-size: 60%;
+        padding: 1em 2px;
+    }
+
+    a {
+        padding: 1em 10px;
+    }
+
+    a::after {
+        inset: 1px;
+    }
 }
