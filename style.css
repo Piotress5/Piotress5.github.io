@@ -8,14 +8,10 @@ body {
     background: linear-gradient(to right, rgb(20, 20, 20),
     rgb(50, 50, 50), rgb(20, 20, 20));
     color: white;
-    /* height: 150vh; */
 }
 
 header {
-    /* position: fixed;
-    top: 0; */
     height: 12vh;
-    /* width: 100%; */
     min-height: 110px;
     background: rgb(20, 20, 20);
     border-bottom: 3px solid rgb(55, 55, 55);
@@ -59,7 +55,7 @@ a::before {
     position: absolute;
     inset: 0;
     background: var(--afterBackground, repeating-conic-gradient(from 0deg,
-    red 0deg, red 25deg, transparent 20deg, transparent 125deg, red 180deg));
+    #1313b4 0deg, #1313b4 25deg, transparent 20deg, transparent 125deg, #1313b4 180deg));
     opacity: 0;
     mask-image: radial-gradient(transparent 55%, white 55%);
     transition: opacity 0.5s;
@@ -73,7 +69,7 @@ a:hover::before {
 }
 
 a:active::before {
-    background: red;
+    background: #1313b4;
 }
 
 a::after {
@@ -115,5 +111,118 @@ footer {
 
     a::after {
         inset: 1px;
+    }
+}
+
+/* główne ustawienia ^ */
+
+/* ---------- news ---------- */
+
+section.sect-news {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+div.news-container {
+    width: 70%;
+}
+
+div.news-header {
+    background: radial-gradient(black 30%, transparent 70%);
+    width: 320px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 2%;
+}
+
+div.news-desc {
+    background: linear-gradient(to bottom right, #373737, black, #373737);
+    border: 4px solid rgb(55, 55, 55);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+div.project-block {
+    display: block;
+    border: 2px solid rgb(55, 55, 55);
+    border-radius: 10px;
+    background: black;
+    padding: 10px;
+    max-height: 48px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 120%;
+    margin-bottom: 4px;
+    transition: max-height 0.5s ease-out;
+}
+
+div.expanded {
+    max-height: 150px;
+}
+
+div.project {
+    display: flex;
+}
+
+div.project span {
+    padding: 3px;
+    margin-left: 4px;
+    border-radius: 5px;
+    max-height: 25px;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+span.new {
+    background-color: green;
+}
+
+span.update {
+    background-color: rgb(200, 145, 0);
+}
+
+span.bugfix {
+    background-color: red;
+}
+
+svg.news-triangle {
+    cursor: pointer;
+    position: absolute;
+    right: 1%;
+    transition: rotate 0.5s, scale 0.5s;
+}
+
+svg.news-triangle:hover {
+    scale: 80%;
+}
+
+svg.news-triangle:active {
+    rotate: 180deg;
+}
+
+div.project-desc {
+    display: none;
+    font-size: 75%;
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 1000px), (max-height: 500px) {
+    div.news-header {
+        margin-left: 0;
+    }
+    div.news-desc {
+        margin-top: 10px;
+    }
+    footer {
+        bottom: none;
     }
 }
