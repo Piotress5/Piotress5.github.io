@@ -155,14 +155,17 @@ div.project-block {
     border-radius: 10px;
     background: black;
     padding: 10px;
-    max-height: 48px;
+    min-height: 48px;
+    max-height: 0;
     position: relative;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     font-size: 120%;
     margin-bottom: 4px;
-    transition: max-height 0.5s ease-out;
+    cursor: pointer;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
 }
 
 div.expanded {
@@ -182,6 +185,13 @@ div.project span {
     font-weight: bold;
 }
 
+div.project-desc {
+    overflow: hidden;
+    width: 100%;
+    font-size: 75%;
+    margin-top: 10px;
+}
+
 span.new {
     background-color: green;
 }
@@ -198,21 +208,18 @@ svg.news-triangle {
     cursor: pointer;
     position: absolute;
     right: 1%;
+    scale: 80%;
     transition: rotate 0.5s, scale 0.5s;
 }
 
-svg.news-triangle:hover {
-    scale: 80%;
-}
-
-svg.news-triangle:active {
+svg.rotated {
     rotate: 180deg;
 }
 
-div.project-desc {
-    display: none;
-    font-size: 75%;
-    margin-top: 25px;
+p.news-update {
+    padding-top: 20px;
+    font-style: italic;
+    font-size: 85%;
 }
 
 @media screen and (max-width: 1000px), (max-height: 500px) {
@@ -221,8 +228,9 @@ div.project-desc {
     }
     div.news-desc {
         margin-top: 10px;
+        min-height: 600px;
     }
     footer {
-        bottom: none;
+        bottom: unset;
     }
 }

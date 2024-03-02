@@ -23,17 +23,17 @@ menu_hover.forEach(function() {
 
 // ----------------- News -----------------
 //rozwijanie opisu projektów
-news_svg.forEach(function(ikona) {
-    ikona.addEventListener("click", rozwin);
+news_projects.forEach(function(opis) {
+    opis.addEventListener("click", rozwin);
     function rozwin() {
-        news_wartosc = ikona.getAttribute("value") - 1;
-        if (news_projects[news_wartosc].classList.contains("expanded")) {
-            setTimeout(zwin = () => {
-                news_projects_desc[news_wartosc].style.display = "none";
-            }, 650);
+        news_wartosc = opis.getAttribute("value") - 1;
+        if (this.classList.contains("expanded")) {
+            this.style.maxHeight = null;
+            news_svg[news_wartosc].classList.toggle("rotated");
         } else {
-            news_projects_desc[news_wartosc].style.display = "block";
+            this.style.maxHeight = this.scrollHeight + "px";
+            news_svg[news_wartosc].classList.toggle("rotated");
         }
-        news_projects[news_wartosc].classList.toggle("expanded");
+        this.classList.toggle("expanded");
     }
 })
