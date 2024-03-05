@@ -38,18 +38,18 @@ li {
     font-size: 20px;
 }
 
-a {
+li a {
     position: relative;
-    padding: 1em 2.5em;
+    padding: 1em 2em;
     text-decoration: none;
     color: rgb(180, 180, 180);
 }
 
-a:hover {
+li a:hover {
     color: white;
 }
 
-a::before {
+li a::before {
     width: 100%;
     content: '';
     position: absolute;
@@ -61,18 +61,18 @@ a::before {
     transition: opacity 0.5s;
 }
 
-a:hover::before {
+li a:hover::before {
     content: '';
     position: absolute;
     inset: 0;
     opacity: 1;
 }
 
-a:active::before {
+li a:active::before {
     background: #1313b4;
 }
 
-a::after {
+li a::after {
     content: '';
     position: absolute;
     inset: 2px;
@@ -85,13 +85,13 @@ footer {
     color: white;
     background-color: #1313b4;
     margin: 0;
-    height: 20vh;
+    height: 15vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 0;
+    /* bottom: 0; */
     border-top: 1em solid black;
 }
 
@@ -104,11 +104,9 @@ footer {
         font-size: 60%;
         padding: 1em 2px;
     }
-
     a {
         padding: 1em 10px;
     }
-
     a::after {
         inset: 1px;
     }
@@ -120,6 +118,7 @@ footer {
 
 section.sect-news {
     width: 100%;
+    min-height: 73vh;
     display: flex;
     justify-content: center;
 }
@@ -145,6 +144,8 @@ div.news-desc {
     border-radius: 10px;
     padding: 30px;
     margin: 30px 0;
+    min-height: 550px;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -220,11 +221,19 @@ p.news-update {
     padding-top: 20px;
     font-style: italic;
     font-size: 85%;
+    position: absolute;
+    bottom: 5%;
 }
 
 @media screen and (max-width: 1000px), (max-height: 500px) {
+    div.news-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     div.news-header {
         margin-left: 0;
+        scale: 70%;
     }
     div.news-desc {
         margin-top: 10px;
@@ -232,5 +241,120 @@ p.news-update {
     }
     footer {
         bottom: unset;
+    }
+}
+
+/* ---------- projects ---------- */
+
+section.sect-projects {
+    width: 100%;
+    min-height: 73vh;
+    display: flex;
+    justify-content: center;
+}
+
+div.projects-container {
+    width: 75%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+div.project-object {
+    border: 4px solid rgb(55, 55, 55);
+    background: linear-gradient(to bottom right, #373737, black, #373737);
+    width: 80%;
+    min-height: 200px;
+    margin: 15px 0;
+    border-radius: 10px;
+    display: flex;
+}
+
+div.project-info {
+    width: 75%;
+    padding: 20px;
+    color: rgb(210, 210, 210);
+}
+
+h3.project-header {
+    color: rgb(230, 230, 230);
+    padding: 0 0 5px 10px;
+}
+
+div.project-demo {
+    width: 25%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+div.project-demo::before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 0;
+    height: 76%;
+    width: 2px;
+    background: rgb(45, 45, 45);
+}
+
+div.project-demo a {
+    margin: 20px;
+    font-weight: bold;
+    color: rgb(210, 210, 210);
+}
+
+div.project-demo a:hover {
+    color: white;
+}
+
+div.project-demo a:nth-child(2) {
+    width: 50px;
+    border-radius: 50%;
+}
+
+div.project-demo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 1000px), (max-height: 500px) {
+    div.project-object {
+        margin: 20px 0;
+        flex-direction: column;
+    }
+    div.projects-container {
+        width: 100%;
+    }
+    div.project-info {
+        width: 100%;
+        height: 65%;
+        padding: 30px;
+    }
+    div.project-demo {
+        width: 100%;
+        height: 35%;
+        padding: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    div.project-demo::before {
+        top: 0;
+        left: 4%;
+        height: 2px;
+        width: 92%;
+    }
+    div.project-demo img {
+        width: 40px;
+        height: 40px;
+    }
+    div.project-demo a:nth-child(2) {
+        width: 40px;
+        height: 40px;
+        padding: 0;
     }
 }

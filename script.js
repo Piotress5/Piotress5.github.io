@@ -31,7 +31,7 @@ news_projects.forEach(function(opis) {
             this.style.maxHeight = null;
             news_svg[news_wartosc].classList.toggle("rotated");
         } else {
-            this.style.maxHeight = this.scrollHeight + "px";
+            this.style.maxHeight = this.scrollHeight + 5 + "px";
             news_svg[news_wartosc].classList.toggle("rotated");
         }
         this.classList.toggle("expanded");
