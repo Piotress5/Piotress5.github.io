@@ -2,8 +2,13 @@ const menu_hover = document.querySelectorAll("li a");
 const news_svg = document.querySelectorAll("svg.news-triangle");
 const news_projects_desc = document.querySelectorAll("div.project-desc");
 const news_projects = document.querySelectorAll("div.project-block");
+const projects_objects = document.querySelectorAll("div.project-object");
+const projects_list = document.querySelector("div.project-list");
 let licznik = 0;
 let news_wartosc = 0;
+let projects_delay = 0;
+let projects_timer = 0;
+let projects_interval = null;
 
 //animacja menu
 menu_hover.forEach(function() {
@@ -37,3 +42,27 @@ news_projects.forEach(function(opis) {
         this.classList.toggle("expanded");
     }
 })
+
+// ----------------- Projects -----------------
+//opoznienie dla wczytywanych projektow
+for (var i = 0, max = projects_objects.length; i < max; i++) {
+    projects_objects[i].style.animationDelay = i * 0.3 + "s";
+}
+
+projects_interval = setInterval(widok_projekty = () => {
+    projects_objects[projects_timer].style.opacity = "1";
+    projects_timer++;
+    if (projects_timer == projects_objects.length) {
+        clearInterval(projects_interval);
+    }
+}, 300);
+
+setTimeout(widok_delay = () => {
+    projects_interval;
+}, 1100);
+
+projects_delay = projects_objects.length * 0.3 + 0.5;
+projects_list.style.animationDelay = projects_delay + "s";
+setTimeout(widok_lista = () => {
+    projects_list.style.opacity = "1";
+}, projects_delay * 1000 + 1100);
