@@ -49,20 +49,22 @@ for (var i = 0, max = projects_objects.length; i < max; i++) {
     projects_objects[i].style.animationDelay = i * 0.3 + "s";
 }
 
-projects_interval = setInterval(widok_projekty = () => {
-    projects_objects[projects_timer].style.opacity = "1";
-    projects_timer++;
-    if (projects_timer == projects_objects.length) {
-        clearInterval(projects_interval);
-    }
-}, 300);
+if (projects_objects.length > 0) {
+    projects_interval = setInterval(widok_projekty = () => {
+        projects_objects[projects_timer].style.opacity = "1";
+        projects_timer++;
+        if (projects_timer == projects_objects.length) {
+            clearInterval(projects_interval);
+        }
+    }, 300);
 
-setTimeout(widok_delay = () => {
-    projects_interval;
-}, 1100);
+    setTimeout(widok_delay = () => {
+        projects_interval;
+    }, 1100);
 
-projects_delay = projects_objects.length * 0.3 + 0.5;
-projects_list.style.animationDelay = projects_delay + "s";
-setTimeout(widok_lista = () => {
-    projects_list.style.opacity = "1";
-}, projects_delay * 1000 + 1100);
+    projects_delay = projects_objects.length * 0.3 + 0.5;
+    projects_list.style.animationDelay = projects_delay + "s";
+    setTimeout(widok_lista = () => {
+        projects_list.style.opacity = "1";
+    }, projects_delay * 1000 + 1100);
+}
