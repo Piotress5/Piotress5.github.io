@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Piotress5 Homepage">
+  <meta name="description" content="Send me a message with question or let's just simply talk">
   <meta name="author" content="Piotress5">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -21,8 +21,40 @@
       </ul>
     </nav>
   </header>
-  <section>
-
+  <section class="sect-contact">
+    <div class="contact-container">
+      <div class="contact-block">
+        <div class="contact-data">
+          <div class="contact-header">
+            <h2>Contact</h2>
+          </div>
+          <p class="contact-text">
+            <b>Email:</b> example@mail.com<br>
+            <b>GitHub:</b> github.com/Piotress5<br>
+            <b>Linkedin:</b> linkedin.com/in/piotr-ciesla
+          </p>
+        </div>
+        <div class="contact-socials">
+          <a href="https://github.com/Piotress5">
+            <img src="img/github-mark-white.png" alt="github">
+          </a>
+          <a href="https://www.linkedin.com/in/piotr-ciesla">
+            <img src="img/LI-In-Bug.png" alt="linkedin">
+          </a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <form action="https://formsubmit.co/your@email.com" method="POST">
+          <label for="name">Full Name:</label>
+          <input type="text" name="name" id="name" placeholder="Your name" required>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" placeholder="example@domain.com" required>
+          <label for="message">Message:</label>
+          <textarea name="message" id="message" rows="10" placeholder="Write something..." required></textarea>
+          <button type="submit" class="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   </section>
   <footer>
     <p class="info"><em>Copyright 2024 © Piotr Cieśla</em></p>
