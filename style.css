@@ -529,11 +529,37 @@ section.sect-contact {
 div.contact-container {
     width: 65%;
     border: 4px solid rgb(55, 55, 55);
-    background: radial-gradient(black, black, #222222);
+    background: radial-gradient(black, black, #1b1b1b);
     padding: 10px;
     margin: 2%;
     border-radius: 10px;
+    position: relative;
     display: flex;
+    animation: rescale1 2s;
+}
+@keyframes rescale1 {
+    0%   {opacity: 0; transform: translateY(-500px) scale(0.2);}
+    50%  {opacity: 1; transform: scale(0.2);}
+    100% {opacity: 1; transform: scale(1);}
+}
+
+div.contact-container::before {
+    content: '';
+    position: absolute;
+    top: 0.5%;
+    left: 0.5%;
+    width: 99%;
+    height: 99%;
+    background: radial-gradient(black, black, #222222);
+    opacity: 1;
+    visibility: hidden;
+    z-index: 10;
+    animation: rescale2 2.7s;
+}
+@keyframes rescale2 {
+    0%   {opacity: 1; visibility: visible;}
+    75%  {opacity: 1; visibility: visible;}
+    100% {opacity: 0; visibility: hidden;}
 }
 
 div.contact-block {
@@ -619,6 +645,7 @@ button.submit {
     font-size: 130%;
     border-radius: 10px;
     width: 65%;
+    cursor: pointer;
 }
 
 button.submit:hover {
