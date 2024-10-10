@@ -7,6 +7,7 @@ const news_projects = document.querySelectorAll("div.project-block");
 const projects_objects = document.querySelectorAll("div.project-object");
 const projects_list = document.querySelector("div.project-list");
 const body = document.querySelector("body");
+const panels = document.querySelectorAll("div.subcategory");
 let licznik = 0;
 let news_wartosc = 0;
 let projects_delay = 0;
@@ -31,32 +32,44 @@ menu_hover.forEach(function() {
 
 // ----------------- Mainpage -----------------
 //animacja wstepna
-body.onload = function entry_animation() {
-    setTimeout(() => {
-        main_start_block.style.opacity = "1";
-        main_start_block.style.setProperty('--welcome_light1', 'left_light');
-        main_start_block.style.setProperty('--welcome_light2', 'right_light');
-        main_start_block.style.setProperty('--repeating', '1');
+if (main_start_block) {
+    body.onload = function entry_animation() {
         setTimeout(() => {
-            main_start_block.style.setProperty('--welcome_light1', 'flickering');
-            main_start_block.style.setProperty('--welcome_light2', 'flickering');
-            main_start_block.style.setProperty('--duration1', '2s');
-            main_start_block.style.setProperty('--repeating1', 'infinite');
+            main_start_block.style.opacity = "1";
+            main_start_block.style.setProperty('--welcome_light1', 'left_light');
+            main_start_block.style.setProperty('--welcome_light2', 'right_light');
+            main_start_block.style.setProperty('--repeating', '1');
             setTimeout(() => {
-                main_start_header.style.opacity = "1";
-                main_start_header.style.setProperty('--repeating2', '1');
-                main_start_header.style.setProperty('--repeating3', '1');
+                main_start_block.style.setProperty('--welcome_light1', 'flickering');
+                main_start_block.style.setProperty('--welcome_light2', 'flickering');
+                main_start_block.style.setProperty('--duration1', '2s');
+                main_start_block.style.setProperty('--repeating1', 'infinite');
                 setTimeout(() => {
-                    main_start_header.style.setProperty('--backlight', 'backflickering');
-                    main_start_header.style.setProperty('--repeating3', 'infinite');
-                    main_start_header.style.setProperty('--duration2', '1s');
-                    main_start_header.style.setProperty('--header', 'skewing')
-                    main_start_header.style.setProperty('--repeating2', 'infinite');
-                }, 1900);
-            }, 100);
-        }, 3800);
-    }, 100);
+                    main_start_header.style.opacity = "1";
+                    main_start_header.style.setProperty('--repeating2', '1');
+                    main_start_header.style.setProperty('--repeating3', '1');
+                    setTimeout(() => {
+                        main_start_header.style.setProperty('--backlight', 'backflickering');
+                        main_start_header.style.setProperty('--repeating3', 'infinite');
+                        main_start_header.style.setProperty('--duration2', '1s');
+                        main_start_header.style.setProperty('--header', 'skewing')
+                        main_start_header.style.setProperty('--repeating2', 'infinite');
+                    }, 1900);
+                }, 100);
+            }, 3800);
+        }, 100);
+    }
 }
+    //animacja paneli
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("slide");
+            entry.target.classList.remove("slide_right");
+        }
+    });
+});
+panels.forEach((el) => observer.observe(el));
 
 // ----------------- News -----------------
 //rozwijanie opisu projektow

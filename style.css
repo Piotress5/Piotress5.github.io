@@ -230,14 +230,16 @@ div.main-header-block h1::after {
 }
 
 @keyframes skewing {
-    0%   {transform: skewX(0deg);}
-    10%  {transform: skewX(0deg); color: white;}
-    15%  {transform: skewX(10deg); color: rgb(200, 200, 200);}
-    20%  {transform: skewX(0deg); color: white;}
-    50%  {transform: skewX(0deg); color: white;}
-    55%  {transform: skewX(-15deg); color: rgb(200, 200, 200);}
-    60%  {transform: skewX(0deg); color: white;}
-    100% {transform: skewX(0deg);}
+    0%   {transform: skewX(0deg); opacity: 1;}
+    10%  {transform: skewX(0deg); filter: blur(0px);}
+    15%  {transform: skewX(15deg); filter: blur(2px);}
+    20%  {transform: skewX(0deg); filter: blur(0px);}
+    25%  {opacity: 0.8;}
+    50%  {transform: skewX(0deg); filter: blur(0px); opacity: 1;}
+    55%  {transform: skewX(-20deg); filter: blur(2px);}
+    60%  {transform: skewX(0deg); filter: blur(0px);}
+    75%  {opacity: 0.7;}
+    100% {transform: skewX(0deg); opacity: 1;}
 }
 
 @keyframes backlights {
@@ -264,17 +266,28 @@ div.main-container {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 div.subcategory {
-    width: 80%;
-    margin: 50px 0;
+    width: 75%;
+    margin: 70px 0;
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+div.slide_right {
+    transform: translateX(100%);
+}
+
+div.slide {
+    transform: translateX(0%);
 }
 
 div.subcategory h1 {
     height: 100px;
     background: black;
-    border-top-right-radius: 10px;
+    border-bottom: 2px solid #212121;
     padding: 0 100px;
     display: flex;
     justify-content: flex-start;
@@ -283,9 +296,16 @@ div.subcategory h1 {
 
 div.description {
     height: 350px;
-    background: linear-gradient(to bottom right, #373737, black, #373737);
-    padding: 15px 19px 15px 15px;
+    background: linear-gradient(to bottom, black 2%, black 10%, #212121);
+    padding: 40px 40px 40px 50px;
     border-bottom: 4px solid rgb(55, 55, 55);
+    position: relative;
+    display: flex;
+    overflow: auto;
+}
+
+div.subcategory h1, div.description {
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
@@ -295,15 +315,62 @@ div.subcategory:nth-of-type(even) {
 
 div.subcategory:nth-of-type(even) h1 {
     justify-content: flex-end;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 10px;
 }
 
 div.subcategory:nth-of-type(even) div.description {
-    background: linear-gradient(to bottom left, #373737, black, #373737);
-    padding: 15px 15px 15px 19px;
+    padding: 50px;
+}
+
+div.subcategory:nth-of-type(even) h1,
+div.subcategory:nth-of-type(even) div.description {
+    border-top-right-radius: unset;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: unset;
     border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 0;
+}
+
+div.description p {
+    z-index: 1;
+    max-height: 72%;
+    font-size: 130%;
+    overflow: auto;
+}
+
+div.description img {
+    scale: 75%;
+    z-index: 0;
+    position: absolute;
+    opacity: 0.2;
+    bottom: 5%;
+    left: 5%;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+a.button-link {
+    background: rgb(55, 55, 55);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 150%;
+    text-decoration: none;
+    position: absolute;
+    bottom: 10%;
+    right: calc(5% + 32px);
+}
+
+/* div.subcategory:nth-of-type(even) div.description img {
+    left: unset;
+    right: 10%;
+}
+
+div.subcategory:nth-of-type(even) a.button-link {
+    left: calc(5% + 32px);
+    right: unset;
+} */
+
+a.button-link:hover {
+    background: rgb(70, 70, 70);
 }
 
 @media screen and (max-width: 1000px), (max-height: 500px) {
@@ -312,6 +379,7 @@ div.subcategory:nth-of-type(even) div.description {
     }
     div.subcategory {
         font-size: 80%;
+        width: 85%;
     }
 }
 
@@ -669,10 +737,10 @@ section.sect-about {
 }
 
 div.about-container {
-    width: 75%;
+    width: 70%;
     border: 4px solid rgb(55, 55, 55);
-    background: linear-gradient(to right, #222222, black, #222222);
-    padding: 10px 0;
+    background: linear-gradient(to right, #1d1d1d, #0e0e0e, #1d1d1d);
+    padding: 10px 0 30px 0;
     margin: 2%;
     border-radius: 10px;
     display: flex;
@@ -687,7 +755,7 @@ div.about-container {
 
 div.about-header {
     border-radius: 20px;
-    background: linear-gradient(to right, #0e0e88 3%, #141414 12%, transparent);
+    background: linear-gradient(to right, #0e0e88 3%, black 12%, transparent);
     width: 350px;
     height: 90px;
     margin: 15px 40px;
@@ -697,13 +765,14 @@ div.about-header {
 }
 
 p.about-text {
-    margin: 10px 40px;
+    margin: 20px 40px;
     font-size: 110%;
     color: rgb(200, 200, 200);
 }
 
 @media screen and (max-width: 1000px), (max-height: 500px) {
     div.about-container {
+        width: 85%;
         padding: 0 0 10px 0;
     }
     div.about-header {
@@ -843,7 +912,7 @@ input, textarea {
 }
 
 button.submit {
-    border: 1px solid rgb(55, 55, 55);
+    border: unset;
     background: rgb(45, 45, 45);
     color: white;
     margin-top: 5px;
